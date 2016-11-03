@@ -65,8 +65,11 @@ php5.6-zip \
 RUN apt-get install apache2 -y
 COPY ./start_files/apache/conf/ /etc/apache2/conf-enabled/
 COPY ./start_files/apache/sites/ /etc/apache2/sites-enabled/
-COPY ./htdocs_structure/. /var/www/
-RUN rm /var/www/html/index.html
+RUN mkdir /var/www/prj1
+RUN mkdir /var/www/prj2
+RUN mkdir /var/www/prj3
+RUN mkdir /var/www/prj4
+RUN mkdir /var/www/docker_diy
 RUN a2enmod rewrite 
 
 #COMPOSER GLOBAL
