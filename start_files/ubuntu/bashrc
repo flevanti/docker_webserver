@@ -1,4 +1,4 @@
-# NEEDED BY NANO OTHERWIE IT WON'T WORK :)
+# NEEDED BY NANO OTHERWISE IT WON'T WORK :)
 export TERM=xterm
 
 
@@ -10,7 +10,6 @@ function start_agent {
      echo succeeded
      chmod 600 ${SSH_ENV}
      . ${SSH_ENV} > /dev/null
-     /usr/bin/ssh-add;
 }
 
 # Source SSH settings, if applicable
@@ -24,6 +23,8 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi
+
+#REMEMBER TO ADD YOUR KEYS HERE IF YOU WANT TO SSH SERVERS....
 
 
 
