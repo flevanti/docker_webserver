@@ -96,12 +96,13 @@ RUN aws --version
 #MYSQL CLIENT
 RUN apt-get install mysql-client-5.6 -y
 
-#ADD HOST IP AND ALIAS IN HOSTS FILE SO WE CAN REFERENCE host_machine.local
+#ADD HOST IP AND ALIAS IN HOSTS FILE SO WE CAN REFERENCE dockerhost, host_machine.local, mysql_host.local
 #PLEASE NOTE THAT THIS IP EVEN IF RELATED TO THE HOST CANNOT BE USED TO CONNECT TO HOST SERVICES
 #IF YOU ARE RUNNING DOCKER ON MAC. 
 #IF YOU ARE USING DOCKER FOR MAC YOU NEED TO USE YOUR HOST IP LAN ADDRESS INSTEAD (UP TO YOU IF YOU WANT TO UPDATE THE HOSTS FILE)
+RUN echo $(/sbin/ip route|awk '/default/ { print $3 }') dockerhost >> /etc/hosts
 RUN echo $(/sbin/ip route|awk '/default/ { print $3 }') host_machine.local >> /etc/hosts
-
+RUN echo $(/sbin/ip route|awk '/default/ { print $3 }') mysql_host.local >> /etc/hosts
 
 #ADD XDEBUG
 RUN pecl channel-update pecl.php.net
