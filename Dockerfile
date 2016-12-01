@@ -7,11 +7,6 @@ COPY ./start_files/ubuntu/start_services.sh /root/
 
 RUN mkdir ~/.ssh
 
-#CHANGE POLICY FOR SERVICES TO START STOP DURING INSTALLATION
-#RUN mv /usr/sbin/policy-rc.d /usr/sbin/policy-rc.d.bck
-#COPY ./start_files/ubuntu/policy-rc.d /usr/sbin/policy-rc.d
-
-
 #ADD NEW PHP5.6 REPO
 #THAT LC STUFF IS NEEDED BECAUSE OF A BUG IN THE PROPERTIES COMMON... :( 
 #IF WE REMOVE THAT THE COMMAND WILL FAIL...
