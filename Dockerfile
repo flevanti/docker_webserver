@@ -48,8 +48,9 @@ php-memcached \
 
 # APACHE WEB SERVER
 COPY ./start_files/apache/conf/ /etc/apache2/conf-enabled/
-COPY ./start_files/apache/sites/ /etc/apache2/sites-enabled/
 COPY ./start_files/apache/mods/ /etc/apache2/mods-enabled/
+COPY ./start_files/apache/default_index.php /var/www/html/index.php
+RUN rm /var/www/html/index.html
 
 
 RUN a2enmod rewrite 
