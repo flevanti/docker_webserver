@@ -48,14 +48,12 @@ php-memcached \
 
 # APACHE WEB SERVER
 COPY ./start_files/apache/conf/ /etc/apache2/conf-enabled/
-COPY ./start_files/apache/sites/ /etc/apache2/sites-enabled/
 COPY ./start_files/apache/mods/ /etc/apache2/mods-enabled/
-RUN mkdir /var/www/prj1 && \
-mkdir /var/www/prj2 && \
-mkdir /var/www/prj3 && \
-mkdir /var/www/prj4 && \
-mkdir /var/www/docker_diy && \
-a2enmod rewrite 
+COPY ./start_files/apache/default_index.php /var/www/html/index.php
+RUN rm /var/www/html/index.html
+
+
+RUN a2enmod rewrite 
 
 #COMPOSER GLOBAL
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
@@ -83,7 +81,7 @@ RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/cli/conf.d/30-xde
 RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/apache2/conf.d/30-xdebug.ini 
 
 #PHP: HAVE THE SESSION FOLDER WRITABLE BY EVERYONE SO THAT WE DO NOT HAVE PERMISSION ISSUES
-RUN chmod -R 777 /var/lib/php/sessions/
+RUN chmod -R 755 /var/lib/php/sessions/
 
 RUN apt-get clean && \
 apt-get purge && \
