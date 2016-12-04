@@ -81,7 +81,7 @@ RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/cli/conf.d/30-xde
 RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/apache2/conf.d/30-xdebug.ini 
 
 #PHP: HAVE THE SESSION FOLDER WRITABLE BY EVERYONE SO THAT WE DO NOT HAVE PERMISSION ISSUES
-RUN chmod -R 755 /var/lib/php/sessions/
+RUN chmod -R 777 /var/lib/php/sessions
 
 RUN apt-get clean && \
 apt-get purge && \
