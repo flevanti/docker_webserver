@@ -1,7 +1,7 @@
 <center>
 <p style="background:lightgrey;"><br>
 <audio controls>
-  <source src="bkg" type="audio/ogg">
+  <source src="bkg.mp3" type="audio/mp3">
 </audio><br>
 <br>
 </p>
