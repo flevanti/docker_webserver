@@ -49,7 +49,7 @@ php-memcached \
 # APACHE WEB SERVER
 COPY ./start_files/apache/conf/ /etc/apache2/conf-enabled/
 COPY ./start_files/apache/mods/ /etc/apache2/mods-enabled/
-COPY ./start_files/apache/default_index.php /var/www/html/index.php
+COPY ./start_files/apache/www_html_default/ /var/www/html/
 RUN rm /var/www/html/index.html
 
 
