@@ -3,6 +3,7 @@ This repo can be used to create a new docker image
 - APACHE
 - PHP
 - XDEBUG
+- XHPROF (URL: xhprof.local - tmp folder /tmp/xhprof  -  xhprof_lib directory '/usr/share/php')
 - AWS CLI
 
 
