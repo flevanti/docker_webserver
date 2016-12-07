@@ -83,6 +83,21 @@ RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/apache2/conf.d/30
 #PHP: HAVE THE SESSION FOLDER WRITABLE BY EVERYONE SO THAT WE DO NOT HAVE PERMISSION ISSUES
 RUN chmod -R 777 /var/lib/php/sessions
 
+
+#INSTALL XHPROF
+RUN pecl install -f xhprof
+RUN  mkdir /tmp/xhprof && \
+chmod 777 /tmp/xhprof && \
+echo "extension=xhprof.so" > /etc/php/5.6/mods-available/xhprof.ini && \
+echo "xhprof.output_dir='/tmp/xhprof'" >> /etc/php/5.6/mods-available/xhprof.ini && \
+ln -s /etc/php/5.6/mods-available/xhprof.ini /etc/php/5.6/apache2/conf.d/35-xhprof.ini && \
+ln -s /etc/php/5.6/mods-available/xhprof.ini /etc/php/5.6/cli/conf.d/35-xhprof.ini && \
+ln -s /usr/share/php/xhprof_html /var/www/xhprof_html
+
+
+#SOME DEFAULT VHOST INCLUDED IN BASE WEBSERVER CONTAINER 
+COPY ./start_files/apache/vhosts/ /etc/apache2/sites-enabled/
+
 RUN apt-get clean && \
 apt-get purge && \
 apt-get autoremove && \
