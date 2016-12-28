@@ -44,6 +44,7 @@ php5.6-zip \
 zip unzip \
 mysql-client-5.6 \
 php-memcached \
+wget \
 -y
 
 # APACHE WEB SERVER
