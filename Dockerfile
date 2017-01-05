@@ -104,5 +104,10 @@ apt-get purge && \
 apt-get autoremove && \
 apt-get autoremove --purge
 
+#THIS COMMAND WILL SHOW DRUSH VERSION
+#IT COULD ALSO OUTPUT AN ERROR IF IT TRIES TO REMOVE A FILE THAT IS NO MORE NEEDED IF IT IS NOT THERE ANYMORE
+
+RUN drush version
+RUN echo "If you see an error related to drush trying to unlink 'package.xml' do not worry, it was expected"
 
 CMD ["sh", "/root/start_services.sh"]
