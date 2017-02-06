@@ -33,3 +33,5 @@ PS1='[DOCKER] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\] : 
 
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
+export LC_ALL=en_US.UTF-8
+ 
