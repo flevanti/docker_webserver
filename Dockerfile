@@ -95,6 +95,8 @@ ln -s /etc/php/5.6/mods-available/xhprof.ini /etc/php/5.6/apache2/conf.d/35-xhpr
 ln -s /etc/php/5.6/mods-available/xhprof.ini /etc/php/5.6/cli/conf.d/35-xhprof.ini && \
 ln -s /usr/share/php/xhprof_html /var/www/xhprof_html
 
+#INSTALL A COMMON LOCALE TO BE USED LATER IF WE WANT
+RUN locale-gen "en_US.UTF-8"
 
 #SOME DEFAULT VHOST INCLUDED IN BASE WEBSERVER CONTAINER 
 COPY ./start_files/apache/vhosts/ /etc/apache2/sites-enabled/
