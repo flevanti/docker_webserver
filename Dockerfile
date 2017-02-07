@@ -81,6 +81,11 @@ COPY ./start_files/php/ini/xdebug.ini /etc/php/5.6/mods-available/xdebug.ini
 RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/cli/conf.d/30-xdebug.ini 
 RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/apache2/conf.d/30-xdebug.ini 
 
+#ADD PHP ERROR LOGS
+COPY ./start_files/php/ini/xdebug.ini /etc/php/5.6/mods-available/error_log.ini 
+RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/cli/conf.d/05-error_log.ini 
+RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/apache2/conf.d/error_log.ini 
+
 #PHP: HAVE THE SESSION FOLDER WRITABLE BY EVERYONE SO THAT WE DO NOT HAVE PERMISSION ISSUES
 RUN chmod -R 777 /var/lib/php/sessions
 
