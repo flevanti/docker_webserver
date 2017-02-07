@@ -82,7 +82,7 @@ RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/cli/conf.d/30-xde
 RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/apache2/conf.d/30-xdebug.ini 
 
 #ADD PHP ERROR LOGS
-COPY ./start_files/php/ini/xdebug.ini /etc/php/5.6/mods-available/error_log.ini 
+COPY ./start_files/php/ini/error_log.ini /etc/php/5.6/mods-available/error_log.ini 
 RUN ln -s  /etc/php/5.6/mods-available/error_log.ini /etc/php/5.6/cli/conf.d/05-error_log.ini 
 RUN ln -s  /etc/php/5.6/mods-available/error_log.ini /etc/php/5.6/apache2/conf.d/error_log.ini 
 
