@@ -45,7 +45,6 @@ zip unzip \
 mysql-client-5.6 \
 php-memcached \
 wget \
-php-apcu \
 -y
 
 # APACHE WEB SERVER
@@ -116,5 +115,9 @@ apt-get autoremove --purge
 #IT COULD ALSO OUTPUT AN ERROR IF IT TRIES TO REMOVE A FILE THAT IS NO MORE NEEDED IF IT IS NOT THERE ANYMORE
 RUN /root/.composer/vendor/bin/drush version
 RUN echo If you see an error related to drush trying to unlink 'package.xml' do not worry, it was expected
+
+#INSTALL PHP APC PACKAGE
+#NEEDS TO BE DONE HERE.. IF WE DO IT BEFORE... IT WILL CRASH PECL INSTALLATION
+RUN apt-get install php-apcu -y
 
 CMD ["sh", "/root/start_services.sh"]
