@@ -116,8 +116,4 @@ apt-get autoremove --purge
 RUN /root/.composer/vendor/bin/drush version
 RUN echo If you see an error related to drush trying to unlink 'package.xml' do not worry, it was expected
 
-#INSTALL PHP APC PACKAGE
-#NEEDS TO BE DONE HERE.. IF WE DO IT BEFORE... IT WILL CRASH PECL INSTALLATION
-RUN apt-get install php-apcu -y
-
 CMD ["sh", "/root/start_services.sh"]
