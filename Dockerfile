@@ -95,6 +95,11 @@ COPY ./start_files/php/ini/memory_limit.ini /etc/php/5.6/mods-available/memory_l
 RUN ln -s  /etc/php/5.6/mods-available/memory_limit.ini /etc/php/5.6/cli/conf.d/10-memory_limit.ini 
 RUN ln -s  /etc/php/5.6/mods-available/memory_limit.ini /etc/php/5.6/apache2/conf.d/10-memory_limit.ini 
 
+#PHP UPLOAD LIMIT
+COPY ./start_files/php/ini/upload_size_limit.ini /etc/php/5.6/mods-available/upload_size_limit.ini 
+RUN ln -s  /etc/php/5.6/mods-available/upload_size_limit.ini /etc/php/5.6/cli/conf.d/10-upload_size_limit.ini 
+RUN ln -s  /etc/php/5.6/mods-available/upload_size_limit.ini /etc/php/5.6/apache2/conf.d/10-upload_size_limit.ini 
+
 #INSTALL XHPROF
 RUN pecl install -f xhprof
 RUN  mkdir /tmp/xhprof && \
