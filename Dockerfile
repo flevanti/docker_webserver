@@ -42,6 +42,7 @@ php5.6-bz2 \
 php5.6-bcmath \
 php5.6-xml \
 php5.6-zip \
+php5.6-soap \
 zip unzip \
 mysql-client-5.6 \
 php-memcached \
