@@ -57,6 +57,7 @@ RUN rm /var/www/html/index.html
 
 
 RUN a2enmod rewrite 
+RUN a2enmod headers
 
 #COMPOSER GLOBAL
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
