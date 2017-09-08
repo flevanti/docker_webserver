@@ -19,6 +19,7 @@ RUN LC_ALL=C.UTF-8  add-apt-repository ppa:ondrej/apache2
 #UPDATE/UPGRADE/INSTALL PACKAGES 
 RUN apt-get update && \
 apt-get upgrade -y && \
+apt-get dist-upgrade -y && \
 apt-get install \
 curl  \
 nano  \ 
@@ -47,6 +48,7 @@ zip unzip \
 mysql-client-5.6 \
 php-memcached \
 wget \
+fop \
 -y
 
 # APACHE WEB SERVER
