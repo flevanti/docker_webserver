@@ -49,6 +49,7 @@ mysql-client-5.6 \
 php-memcached \
 wget \
 fop \
+pv \
 -y
 
 # APACHE WEB SERVER
