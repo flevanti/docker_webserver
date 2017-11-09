@@ -50,6 +50,7 @@ php-memcached \
 wget \
 fop \
 pv \
+git-core bash-completion \
 -y
 
 # APACHE WEB SERVER
@@ -68,6 +69,10 @@ php composer-setup.php && \
 php -r "unlink('composer-setup.php');" && \
 mv composer.phar /usr/local/bin/composer && \
 echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> /root/.bashrc
+
+# ADD GIT COMPLETION IN BASH RC
+RUN echo '#GIT AUTOCOMPLETION' >> /root/.bashrc && \
+echo 'source /usr/share/bash-completion/completions/git' >> /root/.bashrc
 
 #DRUSH GLOBAL
 RUN composer global require drush/drush:6.*
