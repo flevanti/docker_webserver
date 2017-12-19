@@ -28,7 +28,7 @@ parse_git_branch() {
 }
 
 
-PS1='[ DOCKER ] \w $(parse_git_branch)  \$ '
+PS1='[ DOCKER ] \w \[\e[95m\]$(parse_git_branch)\[\e[0m\] \$ '
 
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
