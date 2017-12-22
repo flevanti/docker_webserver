@@ -136,4 +136,6 @@ apt-get autoremove --purge
 RUN /root/.composer/vendor/bin/drush version
 RUN echo If you see an error related to drush trying to unlink 'package.xml' do not worry, it was expected
 
+RUN apt-get install screen -y
+
 CMD ["sh", "/root/start_services.sh"]
