@@ -139,4 +139,11 @@ RUN echo If you see an error related to drush trying to unlink 'package.xml' do 
 RUN apt-get install screen -y
 COPY ./start_files/ubuntu/screenrc /root/.screenrc
 
+RUN apt-get install ssmtp -y
+RUN echo "# configure ssmtp as a sendmail dummy wrapper" >> /etc/php/5.6/mods-available/sendmail.ini
+RUN echo "# you can configure /etc/ssmtp/ssmtp.conf for the smtp server or mailcatcher" >> /etc/php/5.6/mods-available/sendmail.ini
+RUN echo "sendmail_path = /usr/sbin/ssmtp -t" >> /etc/php/5.6/mods-available/sendmail.ini
+RUN phpenmod sendmail
+
+
 CMD ["sh", "/root/start_services.sh"]
