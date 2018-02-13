@@ -87,7 +87,7 @@ aws --version
 
 #ADD XDEBUG
 RUN pecl channel-update pecl.php.net && \
-pecl install xdebug 
+pecl install xdebug-2.5.5
 COPY ./start_files/php/ini/xdebug.ini /etc/php/5.6/mods-available/xdebug.ini 
 RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/cli/conf.d/30-xdebug.ini 
 RUN ln -s  /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/apache2/conf.d/30-xdebug.ini 
