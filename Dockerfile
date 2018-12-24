@@ -126,4 +126,10 @@ apt-get autoremove --purge
 COPY ./start_files/ubuntu/bashrc /root/.bashrc
 COPY ./start_files/ubuntu/start_service.sh /root/
 
+RUN apt-get install -y ssmtp
+RUN echo "; configure ssmtp as a sendmail dummy wrapper" >> /etc/php/7.3/mods-available/sendmail.ini
+RUN echo "; you can configure /etc/ssmtp/ssmtp.conf for the smtp server or mailcatcher" >> /etc/php/7.3/mods-available/sendmail.ini
+RUN echo "sendmail_path = /usr/sbin/ssmtp -t" >> /etc/php/7.3/mods-available/sendmail.ini
+RUN phpenmod sendmail
+
 CMD ["sh", "/root/start_service.sh"]
