@@ -43,10 +43,6 @@ RUN apt-get install -y php-pear
 RUN apt-get install -y php7.3-dev
 RUN apt-get install -y  php7.3-xdebug
 
-COPY ./start_files/php/ini/xdebug.ini /etc/php/7.3/mods-available/xdebug.ini 
-RUN ln -s  /etc/php/7.3/mods-available/xdebug.ini /etc/php/7.3/cli/conf.d/30-xdebug.ini 
-RUN ln -s  /etc/php/7.3/mods-available/xdebug.ini /etc/php/7.3/apache2/conf.d/30-xdebug.ini 
-
 #ADD PHP ERROR LOGS
 COPY ./start_files/php/ini/error_log.ini /etc/php/7.3/mods-available/error_log.ini 
 RUN ln -s  /etc/php/7.3/mods-available/error_log.ini /etc/php/7.3/cli/conf.d/05-error_log.ini 
@@ -64,16 +60,6 @@ RUN ln -s  /etc/php/7.3/mods-available/memory_limit.ini /etc/php/7.3/apache2/con
 COPY ./start_files/php/ini/upload_size_limit.ini /etc/php/7.3/mods-available/upload_size_limit.ini 
 RUN ln -s  /etc/php/7.3/mods-available/upload_size_limit.ini /etc/php/7.3/cli/conf.d/10-upload_size_limit.ini 
 RUN ln -s  /etc/php/7.3/mods-available/upload_size_limit.ini /etc/php/7.3/apache2/conf.d/10-upload_size_limit.ini 
-
-#INSTALL XHPROF
-#RUN pecl install -f xhprof
-#RUN  mkdir /tmp/xhprof && \
-#chmod 777 /tmp/xhprof && \
-#echo "extension=xhprof.so" > /etc/php/7.3/mods-available/xhprof.ini && \
-#echo "xhprof.output_dir='/tmp/xhprof'" >> /etc/php/7.3/mods-available/xhprof.ini && \
-#ln -s /etc/php/7.3/mods-available/xhprof.ini /etc/php/7.3/apache2/conf.d/35-xhprof.ini && \
-#ln -s /etc/php/7.3/mods-available/xhprof.ini /etc/php/7.3/cli/conf.d/35-xhprof.ini && \
-#ln -s /usr/share/php/xhprof_html /var/www/xhprof_html
 
 #INSTALL A COMMON LOCALE TO BE USED LATER IF WE WANT
 RUN apt-get install - locales
@@ -131,5 +117,11 @@ RUN echo "; configure ssmtp as a sendmail dummy wrapper" >> /etc/php/7.3/mods-av
 RUN echo "; you can configure /etc/ssmtp/ssmtp.conf for the smtp server or mailcatcher" >> /etc/php/7.3/mods-available/sendmail.ini
 RUN echo "sendmail_path = /usr/sbin/ssmtp -t" >> /etc/php/7.3/mods-available/sendmail.ini
 RUN phpenmod sendmail
+
+
+#XDEBUG SHOULD BE ALREADY INSTALLED/ENABLED SO WE JUST NEED TO ADD/INJECT THE CONFIGURATION
+COPY ./start_files/php/ini/xdebug_to_inject.ini ./xdebug_to_inject.ini
+RUN cat ./xdebug_to_inject.ini >> /etc/php/7.3/mods-available/xdebug.ini 
+RUN rm ./xdebug_to_inject.ini
 
 CMD ["sh", "/root/start_service.sh"]
