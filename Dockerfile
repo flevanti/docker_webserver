@@ -41,7 +41,8 @@ RUN apt-get install -y php7.3-bcmath
 RUN apt-get install -y php7.3-soap
 RUN apt-get install -y php-pear
 RUN apt-get install -y php7.3-dev
-RUN apt-get install -y  php7.3-xdebug
+RUN apt-get install -y php7.3-xdebug
+RUN apt-get install -y php-mongodb
 
 #ADD PHP ERROR LOGS
 COPY ./start_files/php/ini/error_log.ini /etc/php/7.3/mods-available/error_log.ini 
