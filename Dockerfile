@@ -83,6 +83,7 @@ RUN apt-get install -y sudo
 RUN apt-get install -y curl
 RUN apt-get install -y git
 RUN apt-get install -y screen 
+RUN apt-get install -y iputils-ping
 
 COPY ./start_files/ubuntu/screenrc /root/.screenrc
 
