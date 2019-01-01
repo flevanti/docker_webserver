@@ -126,4 +126,10 @@ COPY ./start_files/php/ini/xdebug_to_inject.ini ./xdebug_to_inject.ini
 RUN cat ./xdebug_to_inject.ini >> /etc/php/7.3/mods-available/xdebug.ini 
 RUN rm ./xdebug_to_inject.ini
 
+
+#DISABLE OPCACHE PHP EXTENSION - this was causing apache child process to die
+#ALL REQUEST FROM CLI WERE FAILING (curl 127.0.0.1) WHILE BROWSER REQ. WERE FAILING WITH A VERY HIGH RATIO
+#don't know if issue is slow disk, docker or ZEND BUFFER OUTPUT size issues.
+RUN phpdismod opcache
+
 CMD ["sh", "/root/start_service.sh"]
