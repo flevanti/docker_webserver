@@ -132,4 +132,6 @@ RUN rm ./xdebug_to_inject.ini
 #don't know if issue is slow disk, docker or ZEND BUFFER OUTPUT size issues.
 RUN phpdismod opcache
 
+RUN apt-get install -y run-one
+
 CMD ["sh", "/root/start_service.sh"]
