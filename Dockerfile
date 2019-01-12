@@ -99,12 +99,16 @@ echo 'source /usr/share/bash-completion/completions/git' >> /root/.bashrc
 #SHOULD WE INSTALL DRUSH 8? 
 #RUN composer global require drush/drush:6.*
 
-RUN apt-get -y install python3-pip
-RUN pip3 install awscli --upgrade --user
-
-#AWS CLI
 #LOOKS LIKE THE DEFAULT PYTHON INSTALLATION DOES NOT PROVIDE A PYTHON COMMAND ALIAS... LET'S CREATE IT (USING SYMLINK)
 RUN ln -sf /usr/bin/python3 /usr/bin/python
+
+#INSTALL PIP3 
+RUN apt-get -y install python3-pip
+
+#AWS CLI
+RUN pip3 install awscli --upgrade --user
+#ADD AWS CLI COMMAND TO PATH (ESCAPE $ TO AVOID PARSING OF THE VARIABLE AT THIS STAGE)
+RUN echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
 
 RUN apt-get clean && \
 apt-get purge && \
