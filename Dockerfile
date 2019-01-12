@@ -107,8 +107,6 @@ RUN apt-get -y install python3-pip
 
 #AWS CLI
 RUN pip3 install awscli --upgrade --user
-#ADD AWS CLI COMMAND TO PATH (ESCAPE $ TO AVOID PARSING OF THE VARIABLE AT THIS STAGE)
-RUN echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
 
 RUN apt-get clean && \
 apt-get purge && \
